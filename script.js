@@ -31,7 +31,7 @@ function setTimer() {
 }
 
 function startTimer() {
-  setTimer(); // You can use the setTimer function to start the timer as well
+  setTimer();
 }
 
 function pauseTimer() {
