@@ -7,14 +7,23 @@
     <title>Countdown Timer</title>
   </head>
   <body>
-    <label for="duration">Set Countdown Time (minutes): </label>
-    <input type="number" id="duration" min="1" step="1" value="5" />
-    <button onclick="setTimer()">Set Timer</button>
+    <div class="container">
+      <h1>Countdown Timer</h1>
 
-    <div id="countdown"></div>
-    <button onclick="startTimer()">Start</button>
-    <button onclick="pauseTimer()">Pause</button>
-    <button onclick="resetTimer()">Reset</button>
+      <div class="input-container">
+        <label for="duration">Set Countdown Time (minutes): </label>
+        <input type="number" id="duration" min="1" step="1" value="5" />
+        <button onclick="setTimer()">Set Timer</button>
+      </div>
+
+      <div id="countdown" class="countdown"></div>
+
+      <div class="button-container">
+        <button onclick="startTimer()">Start</button>
+        <button onclick="pauseTimer()">Pause</button>
+        <button onclick="resetTimer()">Reset</button>
+      </div>
+    </div>
 
     <script src="script.js"></script>
   </body>

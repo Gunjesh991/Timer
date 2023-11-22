@@ -1,33 +1,40 @@
 var timer;
 var timeLeft;
 var isTimerRunning = false;
+var minutesDisplay;
+var secondsDisplay;
 
 function setTimer() {
   var inputDuration = document.getElementById("duration").value;
+
   if (inputDuration && !isTimerRunning) {
-    timeLeft = inputDuration * 60;
     isTimerRunning = true;
 
-    var minutesDisplay = Math.floor(timeLeft / 60);
-    var secondsDisplay = timeLeft % 60;
-
-    document.getElementById("countdown").innerHTML = minutesDisplay + "m " + secondsDisplay + "s ";
+    timeLeft = inputDuration * 60;
+    updateDisplay();
 
     timer = setInterval(function () {
-      var minutesDisplay = Math.floor(timeLeft / 60);
-      var secondsDisplay = timeLeft % 60;
-
-      document.getElementById("countdown").innerHTML = minutesDisplay + "m " + secondsDisplay + "s ";
-
       if (timeLeft <= 0) {
         clearInterval(timer);
         document.getElementById("countdown").innerHTML = "EXPIRED";
         isTimerRunning = false;
+      } else {
+        timeLeft--;
+        updateDisplay();
       }
-
-      timeLeft--;
     }, 1000);
   }
+}
+
+function updateDisplay() {
+  minutesDisplay = Math.floor(timeLeft / 60);
+  secondsDisplay = timeLeft % 60;
+
+  document.getElementById("countdown").innerHTML = padWithZero(minutesDisplay) + "m " + padWithZero(secondsDisplay) + "s ";
+}
+
+function padWithZero(value) {
+  return value < 10 ? "0" + value : value;
 }
 
 function startTimer() {
